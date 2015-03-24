@@ -1,0 +1,81 @@
+
+#google maps
+
+function showGoogleMap(
+		show_self_location (bool), 
+		point_list (
+		[
+			{
+				'address' : string,
+				'title' : string,
+				'description': : string
+			}
+		]
+		)
+	)
+
+
+
+#komunikacja z kinami
+def getData () 
+	:
+		[
+				{
+					'name' : string,
+					'address' : string,
+					'movies' : [
+						'title' : string,
+						'shows' : [
+							'Y-m-d H:i',...
+						]
+					],
+				}
+		]
+
+def getCinemaType ()
+	: string (np. "MultiKino")
+
+def getReserveLink (address(string), time(Y-m-d H:i string), movie_title(string)) 
+	: string link do rezerwacji
+
+
+
+#baza danych
+def getByMovie (title)
+	: None (jeśli nie ma filmu)
+	: [
+			'cinema_type' : string,
+			'name' : string,
+			'address' : string,
+			'shows' : [
+				'Y-m-d H:i', ...
+			]
+	]
+
+def getByCinema(cinema_type, name)
+	: None
+	: {
+		'address' : string,
+		'movies' : [
+			{
+				'title' : string,
+				'shows' : [
+					'Y-m-d H:i', ...
+				]
+			}
+		]
+	}
+
+def getCinemas () 
+	: [
+		{
+			'cinema_type' : string,
+			'name' : string,
+			'address' : string,
+		}
+	]
+
+def getMovies () 
+	: [
+			string (tytuł)
+	]
