@@ -6,7 +6,8 @@ function showGoogleMap(
 		point_list (
 		[
 			{
-				'address' : string,
+				'lat' : float,
+				'ling' : float,				
 				'title' : string,
 				'description': : string
 			}
@@ -23,6 +24,8 @@ def getData ()
 				{
 					'name' : string,
 					'address' : string,
+					'lat' : float,
+					'lng' : float,
 					'movies' : [
 						'title' : string,
 						'shows' : [
@@ -47,6 +50,8 @@ def getByMovie (title)
 			'cinema_type' : string,
 			'name' : string,
 			'address' : string,
+			'lat' : float,
+			'lng' : float,
 			'shows' : [
 				'Y-m-d H:i', ...
 			]
@@ -56,6 +61,8 @@ def getByCinema(cinema_type, name)
 	: None
 	: {
 		'address' : string,
+		'lat' : float,
+		'lng' : float,
 		'movies' : [
 			{
 				'title' : string,
@@ -72,6 +79,8 @@ def getCinemas ()
 			'cinema_type' : string,
 			'name' : string,
 			'address' : string,
+			'lat' : float,
+			'lng' : float
 		}
 	]
 
