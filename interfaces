@@ -7,7 +7,7 @@ function showGoogleMap(
 		[
 			{
 				'lat' : float,
-				'ling' : float,				
+				'lng' : float,				
 				'title' : string,
 				'description': : string
 			}
