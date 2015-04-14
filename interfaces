@@ -27,10 +27,12 @@ def getData ()
 					'lat' : float,
 					'lng' : float,
 					'movies' : [
-						'title' : string,
-						'shows' : [
-							'Y-m-d H:i',...
-						]
+						{
+							'title' : string,
+							'shows' : [
+								'Y-m-d H:i',...
+							]
+						}
 					],
 				}
 		]
@@ -47,6 +49,7 @@ def getReserveLink (address(string), time(Y-m-d H:i string), movie_title(string)
 def getByMovie (title)
 	: None (jeśli nie ma filmu)
 	: [
+		{
 			'cinema_type' : string,
 			'name' : string,
 			'address' : string,
@@ -55,6 +58,7 @@ def getByMovie (title)
 			'shows' : [
 				'Y-m-d H:i', ...
 			]
+		}
 	]
 
 def getByCinema(cinema_type, name)
@@ -87,4 +91,17 @@ def getCinemas ()
 def getMovies () 
 	: [
 			string (tytuł)
+	]
+
+def getShows ()
+	: [
+		{
+				'title' : string,
+				'cinema_type' : string,
+				'name' : string,
+				'address' : string,
+				'lat' : float,
+				'lng' : float,
+				'date' :  Y-m-d H:i
+		}
 	]
