@@ -5,8 +5,19 @@
                src="https://maps.googleapis.com/maps/api/js"></script>
         <script type="text/javascript" src="{% static "js/map.js" %}"></script>
         <script type="text/javascript">
-            showGoogleMap(false, [{lat: 52.258, lng: 21.020, title: "A", description: "Punkt A"}, {lat: 52.248, lng: 21.020, title: "B", description: "Punkt B"},
-                        {lat: 52.248, lng: 21.010, title: "C", description: "Punkt C"}, {lat: 52.258, lng: 21.010, title: "D", description: "Punkt D"}]);
+            //showGoogleMap(false, [{lat: 52.258, lng: 21.020, title: "A", description: "Punkt A"}, {lat: 52.248, lng: 21.020, title: "B", description: "Punkt B"},
+            //            {lat: 52.248, lng: 21.010, title: "C", description: "Punkt C"}, {lat: 52.258, lng: 21.010, title: "D", description: "Punkt D"}]);
+            showGoogleMap(false, [
+                {% for cin in all_cinemas %}
+                    {
+                        lat: {{ cin.lat }},
+                        lng: {{ cin.lng }},
+                        title: "{{ cin.cinema_type }} - {{ cin.name }}",
+                        description: "<span class=\"cin-address\">{{ cin.address }}</span>" +
+                                    "<br><a href=\"{% url 'repertuar' cin.link_type cin.link_name %}\" class=\"rep-link\">Przejdź do repertuaru</a>"
+                    },
+                {% endfor %}
+            ]);
         </script>
       {% endblock %}
 {% block content %}
