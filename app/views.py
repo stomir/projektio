@@ -38,12 +38,19 @@ def repertuar(request, c_type, what):
     if c_type != all and what != 'all':
         name = unquote_plus(what.encode('utf-8')).decode('utf-8')
         cinema_type = unquote_plus(c_type.encode('utf-8')).decode('utf-8')
-        shows = getByCinema(cinema_type, name)
+        cin = getByCinema(cinema_type, name)
+        t_begin = ""
+        t_end = "2016"
+        shows = []
+        for mv in cin['movies']:
+            for time in mv['shows']:
+                if t_begin <= time and time <= t_end:
+                    shows.append({'date': time, 'title': mv['title'], 'name': name, 'address': cin['address']})
     else:
         name = "Wszystkie kina"
         cinema_type = ""
-        #shows = getShows()
-        shows = {}
+        shows = getShows()
+        #shows = {}
 
     context = {
         'all_cinemas': all_cinemas,

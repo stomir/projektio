@@ -37,15 +37,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for mv in shows.movies %}
-                        {% for sh in mv.shows %}
+                    {% for sh in shows %}
                             <tr>
-                                <td>{{ sh }}</td>
-                                <td>{{ mv.title }}</td>
-                                <td>{{ name }}</td>
-                                <td>{{ shows.address }}</td>
+                                <td>{{ sh.date }}</td>
+                                <td>{{ sh.title }}</td>
+                                <td>{{ sh.name }}</td>
+                                <td>{{ sh.address }}</td>
                             </tr>
-                        {% endfor %}
                     {% endfor %}
                     </tbody>
                 </table>
