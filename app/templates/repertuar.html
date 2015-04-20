@@ -13,9 +13,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default">dzisiaj</button>
-                    <button type="button" class="btn btn-default">jutro</button>
-                    <button type="button" class="btn btn-default">pojutrze</button>
+                    <a href="../0/" type="button" class="btn btn-default">dzisiaj</a>
+                    <a href="../1/" type="button" class="btn btn-default">jutro</a>
+                    <a href="../2/" type="button" class="btn btn-default">pojutrze</a>
                 </div>
             </div>
         </div>
@@ -39,10 +39,10 @@
                     <tbody>
                     {% for sh in shows %}
                             <tr>
-                                <td>{{ sh.date }}</td>
-                                <td>{{ sh.title }}</td>
-                                <td>{{ sh.name }}</td>
-                                <td>{{ sh.address }}</td>
+                                <td>{{ sh.date|date:"Y-m-d H:i" }}</td>
+                                <td><a href="{% url 'by_movie' sh.movie.id %}">{{ sh.movie.title }}</a></td>
+                                <td><a href="{% url 'by_cinema' sh.cinema.id %}">{{ sh.cinema.cinema_type }} - {{ sh.cinema.name }}</a></td>
+                                <td>{{ sh.cinema.address }}</td>
                             </tr>
                     {% endfor %}
                     </tbody>

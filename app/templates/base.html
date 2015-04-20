@@ -12,7 +12,7 @@
     <link href="{% static "css/bootstrap5.min.css" %}" rel="stylesheet">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static "js/bootstrap.min.js" %}"></script>
     {% block scripts %} {% endblock %}
@@ -38,12 +38,12 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Repertuar
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{% url 'repertuar' 'all' 'all' %}">wszystkich kin</a></li>
+                            <li><a href="{% url 'repertuar' %}">wszystkich kin</a></li>
                             <li class="divider"></li>
                             <li class="dropdown-header">wybranego kina</li>
                             {% for cinema in all_cinemas %}
                                 <li>
-                                    <a href="{% url 'repertuar' cinema.link_type cinema.link_name %}">{{ cinema.name }}</a>
+                                    <a href="{% url 'by_cinema' cinema.id %}">{{ cinema.name }}</a>
                                 </li>
                             {% endfor %}
                         </ul>

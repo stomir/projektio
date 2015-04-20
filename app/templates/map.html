@@ -14,7 +14,7 @@
                         lng: {{ cin.lng }},
                         title: "{{ cin.cinema_type }} - {{ cin.name }}",
                         description: "<span class=\"cin-address\">{{ cin.address }}</span>" +
-                                    "<br><a href=\"{% url 'repertuar' cin.link_type cin.link_name %}\" class=\"rep-link\">Przejdź do repertuaru</a>"
+                                    "<br><a href=\"{% url 'by_cinema' cin.id %}\" class=\"rep-link\">Przejdź do repertuaru</a>"
                     },
                 {% endfor %}
             ]);
