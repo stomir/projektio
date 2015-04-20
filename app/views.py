@@ -1,21 +1,25 @@
-from urllib import quote_plus, unquote_plus
 from datetime import timedelta
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.utils.timezone import is_aware
 from dbfun import *
 from app.tasks import *
 
 
 def index(request):
-    all_cinemas = getCinemas()
-    all_movies = getMovies()
+    if (request.method == "POST"):
+        if "mapa" in request.POST:
+            return redirect("mapa")
+        elif "repertuar" in request.POST:
+            return redirect("by_movie", movie=request.POST["movie"], day=request.POST["date"])
+    else:
+        all_cinemas = getCinemas()
+        all_movies = getMovies()
 
-    context = {
-        'all_cinemas': all_cinemas,
-        'all_movies': all_movies,
-    }
-    return render(request, 'index.html', context)
+        context = {
+            'all_cinemas': all_cinemas,
+            'all_movies': all_movies,
+        }
+        return render(request, 'index.html', context)
 
 
 def mapa(request):
