@@ -6,9 +6,9 @@ from app.tasks import *
 
 
 def index(request):
-    if (request.method == "POST"):
+    if request.method == "POST":
         if "mapa" in request.POST:
-            return redirect("mapa")
+            return redirect("mapa", movie=request.POST["movie"], day=request.POST["date"])
         elif "repertuar" in request.POST:
             return redirect("by_movie", movie=request.POST["movie"], day=request.POST["date"])
     else:
@@ -22,18 +22,35 @@ def index(request):
         return render(request, 'index.html', context)
 
 
-def mapa(request):
+def mapa(request, movie="", day=""):
     all_cinemas = getCinemas()
+    if movie and day:
+        if day == "0":
+            d1 = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
+        else:
+            d1 = date.today() + timedelta(int(day))
+        d2 = date.today() + timedelta(int(day) + 1)
+
+        m = Movie.objects.get(id=movie)
+        shows = getByMovie(m.title).filter(date__range=(d1, d2)).order_by("date")
+        cinemas = Cinema.objects.filter(id__in=shows.values("cinema"))
+    else:
+        cinemas = all_cinemas
 
     context = {
-        'all_cinemas': all_cinemas
+        'all_cinemas': all_cinemas,
+        'cinemas': cinemas,
     }
     return render(request, 'map.html', context)
 
 
 def repertuar(request, day="0"):
     all_cinemas = getCinemas()
-    d = date.today() + timedelta(int(day))
+    if day == "0":
+        d = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
+    else:
+        d = date.today() + timedelta(int(day))
+
     shows = getShows(d.year, d.month, d.day).order_by("date")
 
     context = {
