@@ -13,7 +13,7 @@ def index(request):
             return redirect("by_movie", movie=request.POST["movie"], day=request.POST["date"])
     else:
         all_cinemas = getCinemas()
-        all_movies = getMovies()
+        all_movies = getMovies().order_by("title")
 
         context = {
             'all_cinemas': all_cinemas,
@@ -49,8 +49,8 @@ def by_cinema(request, cinema, day="0"):
     if day == "0":
         d1 = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
     else:
-        d1 = datetime.today() + timedelta(int(day))
-    d2 = d1 + timedelta(1)
+        d1 = date.today() + timedelta(int(day))
+    d2 = date.today() + timedelta(int(day) + 1)
 
     c = Cinema.objects.get(id=cinema)
     shows = getByCinema(c.cinema_type, c.name).filter(date__range=(d1, d2)).order_by("date")
@@ -68,8 +68,8 @@ def by_movie(request, movie, day="0"):
     if day == "0":
         d1 = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
     else:
-        d1 = datetime.today() + timedelta(int(day))
-    d2 = d1 + timedelta(1)
+        d1 = date.today() + timedelta(int(day))
+    d2 = date.today() + timedelta(int(day) + 1)
     m = Movie.objects.get(id=movie)
     print "Movies", d1, "-", d2
     shows = getByMovie(m.title).filter(date__range=(d1, d2)).order_by("date")
