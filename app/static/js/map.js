@@ -6,7 +6,6 @@ function showGoogleMap(show_self_location, point_list) {
         };
 
         var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        console.log(map);
 
         // Lokalizacja użytkownika:
         if (navigator.geolocation) {
@@ -15,21 +14,20 @@ function showGoogleMap(show_self_location, point_list) {
                     position.coords.longitude);
 
                 map.setCenter(pos);
+                map.setZoom(11);
 
                 if (show_self_location) {
                     new google.maps.Marker({
                         position: pos,
                         map: map,
-                        icon: 'dot.png'
+                        icon: '/static/img/dot.png'
                     });
-                    console.log("Show self location");
                 }
             });
         }
 
 
         // Wyświetlenie punktów:
-        console.log("Points");
         var infowindow = new google.maps.InfoWindow({
             content: ''
         });
@@ -50,10 +48,7 @@ function showGoogleMap(show_self_location, point_list) {
                 }
             }(infocontent));
         }
-
-        console.log("Done");
     }
 
     google.maps.event.addDomListener(window, 'load', init);
-    console.log("Added listener");
 }
