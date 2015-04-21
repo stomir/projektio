@@ -36,6 +36,7 @@ def mapa(request, movie="", day=""):
         cinemas = Cinema.objects.filter(id__in=shows.values("cinema"))
     else:
         cinemas = all_cinemas
+        m = {}
 
     context = {
         'all_cinemas': all_cinemas,
