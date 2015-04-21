@@ -40,6 +40,7 @@ def mapa(request, movie="", day=""):
     context = {
         'all_cinemas': all_cinemas,
         'cinemas': cinemas,
+        'movie': m
     }
     return render(request, 'map.html', context)
 

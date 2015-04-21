@@ -7,7 +7,7 @@
         <script type="text/javascript">
             //showGoogleMap(false, [{lat: 52.258, lng: 21.020, title: "A", description: "Punkt A"}, {lat: 52.248, lng: 21.020, title: "B", description: "Punkt B"},
             //            {lat: 52.248, lng: 21.010, title: "C", description: "Punkt C"}, {lat: 52.258, lng: 21.010, title: "D", description: "Punkt D"}]);
-            showGoogleMap(false, [
+            showGoogleMap(true, [
                 {% for cin in cinemas %}
                     {
                         lat: {{ cin.lat }},
@@ -25,7 +25,7 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Mapa kin wyświetlających szukany przez Ciebie film</h2>
+                    <h2>Mapa kin wyświetlających film "{{ movie.title }}"</h2>
 
                     <p>{% if not cinemas %}
                         Nie ma kina odpowiadającego Twoim kryteriom.
@@ -39,6 +39,3 @@
 
     </div>
 {% endblock %}
-
-  </body>
-</html>
