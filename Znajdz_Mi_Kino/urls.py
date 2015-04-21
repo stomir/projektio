@@ -6,7 +6,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'Znajdz_Mi_Kino.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    # url(r'^admin/', include(admin.site.urls)),
     url(r'^$', index, name='index'),
     url(r'^map/$', mapa, name='mapa'),
     url(r'^map/film/(?P<movie>\d+)/(?P<day>[012])/$', mapa, name='mapa'),
@@ -16,6 +16,6 @@ urlpatterns = patterns('',
     url(r'^repertuar/film/(?P<movie>\d+)/(?P<day>[012])/$', by_movie, name='by_movie'),
     url(r'^repertuar/0/$', repertuar, name='repertuar'),
     url(r'^repertuar/(?P<day>[012])/$', repertuar, name='repertuar'),
-    url(r'^import/$', data_import),
+    # url(r'^import/$', data_import),
 
 )
