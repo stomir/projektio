@@ -75,9 +75,8 @@ def myGetData():
 	return ret
 
 def getData():
-#	try:
-#		data = myGetData()
-#	except:
-#		return None
-#	return data
-	return myGetData()
+	try:
+		data = myGetData()
+	except:
+		return None
+	return data
