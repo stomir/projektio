@@ -41,7 +41,7 @@ function showGoogleMap(show_self_location, point_list) {
                 title: point_list[i].title
             });
 
-            var infocontent = '<h1>' + point_list[i].title + '</h1><p>' + point_list[i].description + '</p>';
+            var infocontent = '<h3>' + point_list[i].title + '</h3><p>' + point_list[i].description + '</p>';
 
             google.maps.event.addListener(marker, 'click', function (content) {
                 return function () {
