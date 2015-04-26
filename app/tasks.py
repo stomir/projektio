@@ -48,6 +48,6 @@ def importData():
 				show.save()
 
 
-def importWeekly():
+def importDaily():
 	importData()	
-	threading.Timer(604800, importWeekly).start()
+	threading.Timer(24*60*60, importDaily).start() # 1 dzien
