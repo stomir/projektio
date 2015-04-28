@@ -46,7 +46,7 @@ def importData():
 			
 			for s in m['shows']:
 				show = Show(cinema = cin, movie = mov, date = datetime.strptime(s, "%Y-%m-%d %H:%M"))
-			 	show.date = show.date.replace(tzinfo=pytz.timezone('Europe/Warsaw'))
+			 	#show.date = show.date.replace(tzinfo=pytz.timezone('Europe/Warsaw'))
 
 				show.save()
 
