@@ -6,6 +6,8 @@ from django.utils import timezone
 from app.models import Cinema, Movie, Show
 from app.cinemacity  import getData, getCinemaType
 
+
+#Aktualizacja bazy danych
 def importData():
 
 	Show.objects.all().delete()
@@ -35,6 +37,7 @@ def importData():
 
 		for m in movies:
 			mov = Movie.objects.filter(title = m['title'])
+			#Czy nowy film
 			if len(mov) == 0:
         	                mov = Movie(title = m['title'])
 				mov.save()
