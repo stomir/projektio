@@ -8,7 +8,8 @@ do rezerwacji internetowej biletów w wybranym kinie.
 Do instalacji paczki wymagane sa następujące moduły:
   * django
   * BeautifulSoup4
-  * pytz
+  * pytz  
+
 Należy ustawić SECRET_KEY w pliku Znajdz_Mi_Kino/settings.py
 Następnie należy uruchomić następujące komendy:
   1. manage.py migrate
