@@ -1,0 +1,35 @@
+front end - dokumentacja:
+
+użyte:
+HTML5, CSS3, javascript
+
+framework: bootstrap
+bazowa skórka http://bootswatch.com/cerulean/ (dostosowana do potrzeb)
+wyświetlanie mapy Google
+
+prawidłowe wyświetlanie na urządzeniach mobilnych
+
+Szablony:
+
+'base.html'
+	Szablon z menu i ogólnym wystrojem strony.
+	Zawiera bloki 'scripts', 'navigation' i 'content'
+	Zmienna 'all_cinemas' zawiera listę kin do wyświetlenia w menu.
+
+'index.html'
+	Szablon strony głównej
+	Rozszerza 'base.html'
+	Zmienna 'all_movies' zawiera wszystkie filmy do wyboru.
+
+'map.html'
+	Szablon mapy kin
+	Rozszerza 'base.html'
+	Zmienna 'cinemas' zawiera kina, które należy pokazać na mapie.
+	Zmienna 'movie' jest ustawiana, gdy pokazywane są kina wyświetlające określony film.
+
+'repertuar.html'
+	Szablon repertuaru
+	Rozszerza 'base.html'
+	Zmienne 'cinema_type' i 'name' określają kino, dla którego repertuar jest wyświetlany.
+	Jeśli 'cinema_type' jest nieustawione, wtedy 'name' oznacza tytuł strony.
+	Zmienna 'shows' zawiera listę wszystkich pokazów, które mają zostać wyświetlone.

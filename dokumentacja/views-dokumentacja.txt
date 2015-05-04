@@ -1,0 +1,46 @@
+Dokumentacja views.py
+
+index(request)
+    Widok strony głównej.
+
+    Pozwala wybrać film i pokazać mapę wyświetlających go kin lub repertuar.
+    Użyty template: 'index.html'
+
+
+mapa(request, movie="", day="")
+    Widok wyświetlający mapę kin.
+
+    Pokazuje mapę kin wyświetlających wybrany film w określonym dniu.
+    Film wybierany jest przez jego id w bazie danych
+    Dzień może przyjąć wartości: 0 - dziś, 1 - jutro, 2 - pojutrze
+    Gdy żaden film nie jest wybrany wyświetla mapę wszystkich kin.
+    Użyty template: 'map.html'
+
+
+repertuar(request, day="0")
+    Widok repertuaru wszystkich kin.
+
+    Pokazuje repertuar wszystkich kin w danym dniu
+    Dzień może przyjąć wartości: 0 - dziś, 1 - jutro, 2 - pojutrze
+    Gdy dzień nie jest podany, repertuar wyświetlany jest na 'dziś'.
+    Użyty template: 'repertuar.html'
+
+
+by_cinema(request, cinema, day="0")
+    Widok repertuaru według kina
+
+    Pokazuje repertuar wybranego kina w określony dzień.
+    Kino wybierane jest przy pomocy jego id w bazie danych.
+    Dzień może przyjąć wartości: 0 - dziś, 1 - jutro, 2 - pojutrze
+    Gdy dzień nie jest podany, repertuar wyświetlany jest na 'dziś'.
+    Użyty template: 'repertuar.html'
+
+
+by_movie(request, movie, day="0")
+    Widok repertuaru według filmu
+
+    Pokazuje repertuar wybranego filmu w określony dzień we wszystkich kinach.
+    Film wybierany jest przez jego id w bazie danych
+    Dzień może przyjąć wartości: 0 - dziś, 1 - jutro, 2 - pojutrze
+    Gdy dzień nie jest podany, repertuar wyświetlany jest na 'dziś'.
+    Użyty template: 'repertuar.html'
