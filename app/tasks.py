@@ -10,10 +10,10 @@ from app.cinemacity  import getData, getCinemaType
 #Aktualizacja bazy danych
 def importData():
 
+	data = getData()
+
 	Show.objects.all().delete()
 	Movie.objects.all().delete()
-
-	data = getData()
 
 	for i in data:
 
