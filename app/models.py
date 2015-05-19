@@ -15,5 +15,11 @@ class Show (models.Model):
 	movie = models.ForeignKey(Movie)
 	date = models.DateTimeField()
 
+class Price (models.Model):
+	cinema = models.ForeignKey(Cinema)
+	movie = models.ForeignKey(Movie)
+	normal = models.FloatField()
+	student = models.FloatField()
+	reduced = models.FloatField()
 
 # Create your models here.
