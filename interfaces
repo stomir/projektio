@@ -9,13 +9,22 @@ function showGoogleMap(
 				'lat' : float,
 				'lng' : float,				
 				'title' : string,
-				'description': : string
+				'description' : string
 			}
 		]
 		)
 	)
 
 
+function getTravelTime(
+		'mode' :
+			google.maps.TravelMode.DRIVING | google.maps.TravelMode.BICYCLING | google.maps.TravelMode.TRANSIT | google.maps.TravelMode.WALKING
+		'loc': 
+		{
+			'lat' : float,
+			'lng' : float
+		}
+)
 
 #komunikacja z kinami
 def getData () 
@@ -31,7 +40,12 @@ def getData ()
 							'title' : string,
 							'shows' : [
 								'Y-m-d H:i',...
-							]
+							],
+							'price' : {
+									'normal' : float,
+									'student' : float,
+									'reduced' : float
+									}
 						}
 					],
 				}
@@ -58,6 +72,12 @@ def getByMovie (title)
 			'shows' : [
 				'Y-m-d H:i', ...
 			]
+			'price' : {
+				'normal' : float,
+				'student' : float,
+				'reduced' : float
+			}
+
 		}
 	]
 
@@ -72,7 +92,12 @@ def getByCinema(cinema_type, name)
 				'title' : string,
 				'shows' : [
 					'Y-m-d H:i', ...
-				]
+				],
+				'price' : {
+					'normal' : float,
+					'student' : float,
+					'reduced' : float
+				}
 			}
 		]
 	}
