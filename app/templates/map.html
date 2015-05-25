@@ -5,19 +5,36 @@
                src="https://maps.googleapis.com/maps/api/js"></script>
         <script type="text/javascript" src="{% static "js/map.js" %}"></script>
         <script type="text/javascript">
-            //showGoogleMap(false, [{lat: 52.258, lng: 21.020, title: "A", description: "Punkt A"}, {lat: 52.248, lng: 21.020, title: "B", description: "Punkt B"},
-            //            {lat: 52.248, lng: 21.010, title: "C", description: "Punkt C"}, {lat: 52.258, lng: 21.010, title: "D", description: "Punkt D"}]);
             showGoogleMap(true, [
                 {% for cin in cinemas %}
                     {
                         lat: {{ cin.lat }},
                         lng: {{ cin.lng }},
                         title: "{{ cin.cinema_type }} - {{ cin.name }}",
-                        description: "<span class=\"cin-address\">{{ cin.address }}</span>" +
-                                    "<br><a href=\"{% url 'by_cinema' cin.id %}\" class=\"rep-link\">Przejdź do repertuaru</a>"
+                        description: "<h4> Czas dojazdu: <span id=\"" + "point-{{ cin.lat }}-{{ cin.lng }}".replace(/\./g, "_") + "\"></span></h4>" +
+                                    {% if cin.shows %}
+                                        "<h4>Pokazy</h4><ul class=\"list-group list-inline\">" +
+                                        {% for s in cin.shows %}
+                                            "<li class=\"list-group-item\">{{ s.date|date:"H:i" }}</li>" +
+                                        {% endfor %}
+                                        "</ul>" +
+                                    {% elif movie != "" %}
+                                        "<h4>To kino nie ma tego filmu w repertuarze</h4>" +
+                                    {% endif %}
+                                    {% if cin.price %}"<ul class=\"list-group list-inline\"><li class=\"list-group-item\">Normalny: {{ cin.price.normal }}</li><li class=\"list-group-item\">Ulgowy: {{ cin.price.reduced }}</li><li class=\"list-group-item\">Studencki: {{ cin.price.student }}</li></ul>" +{% endif %}
+                                    "<p><span class=\"cin-address\">{{ cin.address }}</span>" +
+                                    "<br><a href=\"{% url 'by_cinema' cin.id %}\" class=\"rep-link\">Przejdź do repertuaru</a></p>"
                     },
                 {% endfor %}
             ]);
+            initGetTravelTime([
+            {% for cin in cinemas %}
+                {
+                    pos: {lat: {{ cin.lat }}, lng: {{ cin.lng }} },
+                    selector: "#point-{{ cin.lat }}-{{ cin.lng }}".replace(/\./g, "_")
+                },
+            {% endfor %}
+            ], google.maps.TravelMode.DRIVING);
         </script>
       {% endblock %}
 {% block content %}

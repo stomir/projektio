@@ -16,14 +16,15 @@ function showGoogleMap(
 	)
 
 
-function getTravelTime(
-		'mode' :
-			google.maps.TravelMode.DRIVING | google.maps.TravelMode.BICYCLING | google.maps.TravelMode.TRANSIT | google.maps.TravelMode.WALKING
-		'loc': 
+function initGetTravelTime(
+	point_list (
+	[
 		{
-			'lat' : float,
-			'lng' : float
+			'pos' : {'lat' : float, 'lng' : float},
+			'selector' : string # Służy do zaktualizowania wartości po pobraniu czasu dojazdu
 		}
+	]	
+	)
 )
 
 #komunikacja z kinami

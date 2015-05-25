@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from dbfun import *
 from app.tasks import *
+from models import *
 
 
 def index(request):
@@ -34,9 +35,12 @@ def mapa(request, movie="", day=""):
         m = Movie.objects.get(id=movie)
         shows = getByMovie(m.title).filter(date__range=(d1, d2)).order_by("date")
         cinemas = Cinema.objects.filter(id__in=shows.values("cinema"))
+        for c in cinemas:
+            #c.price = Price.objects.filter(cinema=c, movie=m)
+            c.shows = shows.filter(cinema=c)
     else:
         cinemas = all_cinemas
-        m = {}
+        m = ""
 
     context = {
         'all_cinemas': all_cinemas,
