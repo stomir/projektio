@@ -6,6 +6,12 @@ from bs4 import BeautifulSoup;
 
 google_api_key = 'AIzaSyBp4bRFYsAPL7ltefsD0f9nYIkby21At8o';
 
+def clearTitle (title):
+	title = title.replace(' 4DX', '');
+	title = title.replace(' 3D', '');
+	title = title.replace(' IMAX', '');
+	return title;
+
 def resolveAddr (addr):
 	json_data = urllib2.urlopen(("https://maps.googleapis.com/maps/api/geocode/json?"+urllib.urlencode({'address':addr,'key':google_api_key}))).read()
 	data = json.loads(json_data).get('results')
@@ -54,14 +60,16 @@ def myGetData():
 					title = tr.find('td', {'class':'featureName'}).find('a').contents[0].encode('utf-8')
 				except:
 					continue
-				if (not title in showdict):
-					showdict[title] = []
+				ctitle = clearTitle(title)
+				if (not ctitle in showdict):
+					showdict[ctitle] = []
+				print "Title: "+ctitle
 				shows = []
 				for show in tr.findAll('a'):
 					time = show.contents[0].lstrip().rstrip().encode('utf-8')
 					if (time == title):
 						continue;
-					showdict[title].append((dateiso+' '+time).encode('utf-8'))
+					showdict[ctitle].append((dateiso+' '+time).encode('utf-8'))
 		retmovies = []
 		for title in showdict:
 			retmovies.append({'title':title,'shows':showdict[title]});
