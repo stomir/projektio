@@ -36,7 +36,7 @@ def mapa(request, movie="", day=""):
         shows = getByMovie(m.title).filter(date__range=(d1, d2)).order_by("date")
         cinemas = Cinema.objects.filter(id__in=shows.values("cinema"))
         for c in cinemas:
-            #c.price = Price.objects.filter(cinema=c, movie=m)
+            c.price = Price.objects.get(cinema=c, movie=m)
             c.shows = shows.filter(cinema=c)
     else:
         cinemas = all_cinemas
