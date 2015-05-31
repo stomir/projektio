@@ -72,7 +72,7 @@ def myGetData():
 					showdict[ctitle].append((dateiso+' '+time).encode('utf-8'))
 		retmovies = []
 		for title in showdict:
-			retmovies.append({'title':title,'shows':showdict[title]});
+			retmovies.append({'title':title,'shows':showdict[title], 'price':{'normal': 10, 'reduced':8, 'student':7}});
 		ret.append({
 			'name' : name,
 			'address' : addr,

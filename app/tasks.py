@@ -47,7 +47,7 @@ def importData():
             else:
                 mov = mov[0]
 
-            if len(prices.objects.filter(movie = mov)) == 0:
+            if len(prices.filter(movie = mov)) == 0:
 
                 prc = Price(
                     cinema = cin,
