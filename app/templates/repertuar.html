@@ -10,12 +10,27 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                    <a href="../0/" type="button" class="btn btn-default">Dziś</a>
-                    <a href="../1/" type="button" class="btn btn-default">Jutro</a>
-                    <a href="../2/" type="button" class="btn btn-default">Pojutrze</a>
+
+
+                    <a href="../../0/{{ type }}" type="button" class="btn btn-default">Dziś</a>
+                    <a href="../../1/{{ type }}" type="button" class="btn btn-default">Jutro</a>
+                    <a href="../../2/{{ type }}" type="button" class="btn btn-default">Pojutrze</a>
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+
+
+                    <a href="../0/" type="button" class="btn btn-default">Normalny</a>
+                    <a href="../1/" type="button" class="btn btn-default">Ulgowy</a>
+                    <a href="../2/" type="button" class="btn btn-default">Studencki</a>
+                </div>
+            </div>
+        </div>
+
         <h2>
             {% if cinema_type %}
                 {{ cinema_type }} -
@@ -31,6 +46,8 @@
                         <th>Tytuł filmu</th>
                         <th>Kino</th>
                         <th>Adres</th>
+                        <th>Cena</th>
+                        <th>Czas dojazdu</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -40,6 +57,7 @@
                                 <td><a href="{% url 'by_movie' sh.movie.id %}">{{ sh.movie.title }}</a></td>
                                 <td><a href="{% url 'by_cinema' sh.cinema.id %}">{{ sh.cinema.cinema_type }} - {{ sh.cinema.name }}</a></td>
                                 <td>{{ sh.cinema.address }}</td>
+                                <td> {{ sh.price }} </td>
                             </tr>
                     {% endfor %}
                     </tbody>

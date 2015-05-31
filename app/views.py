@@ -36,7 +36,7 @@ def mapa(request, movie="", day=""):
         shows = getByMovie(m.title).filter(date__range=(d1, d2)).order_by("date")
         cinemas = Cinema.objects.filter(id__in=shows.values("cinema"))
         for c in cinemas:
-            c.price = Price.objects.get(cinema=c, movie=m)
+            c.price = Price.objects.filter(cinema=c, movie=m)
             c.shows = shows.filter(cinema=c)
     else:
         cinemas = all_cinemas
@@ -50,7 +50,7 @@ def mapa(request, movie="", day=""):
     return render(request, 'map.html', context)
 
 
-def repertuar(request, day="0"):
+def repertuar(request, day="0", type="0"):
     all_cinemas = getCinemas()
     if day == "0":
         d = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
@@ -58,8 +58,11 @@ def repertuar(request, day="0"):
         d = date.today() + timedelta(int(day))
 
     shows = getShows(d.year, d.month, d.day).order_by("date")
+    for s in shows:
+        s.price = Price.objects.filter(movie = s.movie, cinema = s.cinema)[0].get_price_by_type(type)
 
     context = {
+        'type' : type,
         'shows': shows,
         'name': "Repertuar wszystkich kin",
         'all_cinemas': all_cinemas,
@@ -67,7 +70,7 @@ def repertuar(request, day="0"):
     return render(request, 'repertuar.html', context)
 
 
-def by_cinema(request, cinema, day="0"):
+def by_cinema(request, cinema, day="0", type="0"):
     all_cinemas = getCinemas()
     if day == "0":
         d1 = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
@@ -78,7 +81,11 @@ def by_cinema(request, cinema, day="0"):
     c = Cinema.objects.get(id=cinema)
     shows = getByCinema(c.cinema_type, c.name).filter(date__range=(d1, d2)).order_by("date")
 
+    for s in shows:
+        s.price = Price.objects.filter(movie = s.movie, cinema = s.cinema)[0].get_price_by_type(type)
+
     context = {
+        'type' : type,
         'shows': shows,
         'name': "Repertuar dla kina " + c.cinema_type + " - " + c.name,
         'all_cinemas': all_cinemas,
@@ -86,7 +93,7 @@ def by_cinema(request, cinema, day="0"):
     return render(request, 'repertuar.html', context)
 
 
-def by_movie(request, movie, day="0"):
+def by_movie(request, movie, day="0", type="0"):
     all_cinemas = getCinemas()
     if day == "0":
         d1 = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
@@ -96,9 +103,13 @@ def by_movie(request, movie, day="0"):
     m = Movie.objects.get(id=movie)
     print "Movies", d1, "-", d2
     shows = getByMovie(m.title).filter(date__range=(d1, d2)).order_by("date")
+    for s in shows:
+        s.price = Price.objects.filter(movie = s.movie, cinema = s.cinema)[0].get_price_by_type(type)
+
     for sh in shows:
         print sh.date
     context = {
+        'type' : type,
         'shows': shows,
         'name': "Repertuar filmu \"" + m.title + "\"",
         'all_cinemas': all_cinemas,
