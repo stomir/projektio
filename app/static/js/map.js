@@ -62,6 +62,7 @@ function setDst(sel) {
         for (var j = 0; j < results.length; j++) {
             var element = results[j];
             $(sel[j]).text(element.duration.text);
+            $(sel[j]).data('time', element.duration.text);
             travelTime[sel[j]] = element.duration.text;
         }
     }

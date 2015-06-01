@@ -11,7 +11,7 @@ def index(request):
         if "mapa" in request.POST:
             return redirect("mapa", movie=request.POST["movie"], day=request.POST["date"])
         elif "repertuar" in request.POST:
-            return redirect("by_movie", movie=request.POST["movie"], day=request.POST["date"])
+            return redirect("by_movie", movie=request.POST["movie"], day=request.POST["date"], type=request.POST["type"])
     else:
         all_cinemas = getCinemas()
         all_movies = getMovies().order_by("title")
