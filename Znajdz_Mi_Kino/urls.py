@@ -17,6 +17,6 @@ urlpatterns = patterns('',
     url(r'^repertuar/film/(?P<movie>\d+)/(?P<day>[012])/(?P<type>[012])/$', by_movie, name='by_movie'),
     url(r'^repertuar/0/0/$', repertuar, name='repertuar'),
     url(r'^repertuar/(?P<day>[012])/(?P<type>[012])/$', repertuar, name='repertuar'),
-    url(r'^import/$', data_import),
+   # url(r'^import/$', data_import),
 
 )

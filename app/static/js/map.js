@@ -46,7 +46,6 @@ function showGoogleMap(show_self_location, point_list) {
                     infowindow.setContent(content);
                     infowindow.open(map, this);
                     var s = ("#point-" + point.lat + "-" + point.lng).replace(/\./g,"_");
-                    console.log(s);
                     $(s).text(travelTime[s]);
                 }
             }(infocontent, point_list[i]));
@@ -59,13 +58,12 @@ function showGoogleMap(show_self_location, point_list) {
 travelTime = {};
 function setDst(sel) {
     return function (response, status) {
-        console.log("Finished: ", sel);
-            var results = response.rows[0].elements;
-            for (var j = 0; j < results.length; j++) {
-                var element = results[j];
-                    $(sel[j]).text(element.duration.text);
-                    travelTime[sel[j]] = element.duration.text;
-                console.log("setDst: ", sel[j], " -> ", element.duration.text);
+        var results = response.rows[0].elements;
+        for (var j = 0; j < results.length; j++) {
+            var element = results[j];
+            $(sel[j]).text(element.duration.text);
+            $(sel[j]).data('time', element.duration.text);
+            travelTime[sel[j]] = element.duration.text;
         }
     }
 }
@@ -83,7 +81,6 @@ function initGetTravelTime(point_list, mode) {
                     dests.push(new google.maps.LatLng(point_list[i + j].pos.lat, point_list[i + j].pos.lng));
                     selectors.push(point_list[i + j].selector);
                 }
-                console.log("service for:", dests);
                 service.getDistanceMatrix(
                     {
                         origins: [start],
