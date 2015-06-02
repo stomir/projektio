@@ -62,7 +62,7 @@ def myGetData():
 						showdict[movie_title].append(s['beginning_date'])
 			retmovies = []
 			for title in showdict:
-				retmovies.append({'title':title,'shows':showdict[title], 'price':{'normal': 10, 'reduced':8, 'student':7}});
+				retmovies.append({'title':title,'shows':showdict[title], 'price':{'normal': 25.90, 'reduced':19.90, 'student':19.90  }});
 			ret.append({
 				'name' : cinema_name,
 				'address' : cinema_addr,
