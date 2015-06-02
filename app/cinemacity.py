@@ -10,6 +10,7 @@ def clearTitle (title):
 	title = title.replace(' 4DX', '');
 	title = title.replace(' 3D', '');
 	title = title.replace(' IMAX', '');
+	title = title.replace(' VIP', '');
 	return title;
 
 def resolveAddr (addr):
@@ -63,7 +64,6 @@ def myGetData():
 				ctitle = clearTitle(title)
 				if (not ctitle in showdict):
 					showdict[ctitle] = []
-				print "Title: "+ctitle
 				shows = []
 				for show in tr.findAll('a'):
 					time = show.contents[0].lstrip().rstrip().encode('utf-8')
