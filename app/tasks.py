@@ -26,7 +26,7 @@ def importData():
         if t == 1:
             data = data1
             from app.cinemacity  import getCinemaType
-        if t == 2:
+        else:
             data = data2
             from app.multikino  import getCinemaType
 
@@ -72,10 +72,13 @@ def importData():
                     prc.save()
 
                 for s in m['shows']:
-                    show = Show(cinema = cin, movie = mov, date = datetime.strptime(s, "%Y-%m-%d %H:%M"))
+			if t == 1:
+				show = Show(cinema = cin, movie = mov, date = datetime.strptime(s, "%Y-%m-%d %H:%M"))
+			else:
+				show = Show(cinema = cin, movie = mov, date = datetime.strptime(s, "%Y-%m-%d %H:%M:%S"))
                     #show.date = show.date.replace(tzinfo=pytz.timezone('Europe/Warsaw'))
 
-                    show.save()
+                	show.save()
 
 
 def importDaily():
