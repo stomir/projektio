@@ -15,3 +15,5 @@ Następnie należy uruchomić następujące komendy:
   1. manage.py migrate
   2. manage.py dbupdate& -- To moze chwilę potrwać
   3. manage.py runserver 0.0.0.0:80
+  4. crontab -e 
+   * Dodaj wiersz: 00 02 * * * python ŚCIEŻKA_DO_KATALOGU/server/manage.py dbupdate
