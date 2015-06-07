@@ -3,9 +3,7 @@ from django.contrib import admin
 from app.views import *
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'Znajdz_Mi_Kino.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^$', index, name='index'),
     url(r'^map/$', mapa, name='mapa'),

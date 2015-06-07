@@ -1,3 +1,4 @@
+# Encoding: utf-8
 from datetime import timedelta
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
@@ -7,6 +8,22 @@ from models import *
 
 
 def index(request):
+    """
+    Widok strony głównej.
+
+    **Context**
+
+    ``all_cinemas``
+        Wszystkie kina - :model:`app.Cinema`.
+
+    ``all_movies``
+        Wszystkie filmy - :model:`app.Movie`.
+
+    **Template:**
+
+    :template:`index.html`
+
+    """
     if request.method == "POST":
         if "mapa" in request.POST:
             return redirect("mapa", movie=request.POST["movie"], day=request.POST["date"])
@@ -24,6 +41,25 @@ def index(request):
 
 
 def mapa(request, movie="", day=""):
+    """
+    Widok pokazujący mapę kin wyświetlających wybrany film w danym dniu.
+
+    **Context**
+
+    ``all_cinemas``
+        Wszystkie kina - :model:`app.Cinema`.
+
+    ``cinemas``
+        Kina (:model:`app.Cinema`) do wyświetlenia na mapie.
+
+    ``movie``
+        Wybrany film - :model:`app.Movie`.
+
+    **Template:**
+
+    :template:`map.html`
+
+    """
     all_cinemas = getCinemas()
     if movie and day:
         if day == "0":
@@ -51,6 +87,28 @@ def mapa(request, movie="", day=""):
 
 
 def repertuar(request, day="0", type="0"):
+    """
+    Widok pokazujący repertuar wszystkich kin w danym dniu.
+
+    **Context**
+
+    ``all_cinemas``
+        Wszystkie kina - :model:`app.Cinema`.
+
+    ``type``
+        Typ biletu do wyświetlenia
+
+    ``shows``
+        Pokazy (:model:`app.Show`) do wyświetlenia w repertuarze.
+
+    ``name``
+        Tytuł wyświetlanego repertuaru.
+
+    **Template:**
+
+    :template:`repertuar.html`
+
+    """
     all_cinemas = getCinemas()
     if day == "0":
         d = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
@@ -71,6 +129,28 @@ def repertuar(request, day="0", type="0"):
 
 
 def by_cinema(request, cinema, day="0", type="0"):
+    """
+    Widok pokazujący repertuar repertuar wybranego kina w określony dzień.
+
+    **Context**
+
+    ``all_cinemas``
+        Wszystkie kina - :model:`app.Cinema`.
+
+    ``type``
+        Typ biletu do wyświetlenia
+
+    ``shows``
+        Pokazy (:model:`app.Show`) do wyświetlenia w repertuarze.
+
+    ``name``
+        Tytuł wyświetlanego repertuaru.
+
+    **Template:**
+
+    :template:`repertuar.html`
+
+    """
     all_cinemas = getCinemas()
     if day == "0":
         d1 = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
@@ -94,6 +174,28 @@ def by_cinema(request, cinema, day="0", type="0"):
 
 
 def by_movie(request, movie, day="0", type="0"):
+    """
+    Widok pokazujący repertuar wybranego filmu w określony dzień we wszystkich kinach.
+
+    **Context**
+
+    ``all_cinemas``
+        Wszystkie kina - :model:`app.Cinema`.
+
+    ``type``
+        Typ biletu do wyświetlenia
+
+    ``shows``
+        Pokazy (:model:`app.Show`) do wyświetlenia w repertuarze.
+
+    ``name``
+        Tytuł wyświetlanego repertuaru.
+
+    **Template:**
+
+    :template:`repertuar.html`
+
+    """
     all_cinemas = getCinemas()
     if day == "0":
         d1 = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
