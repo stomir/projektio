@@ -29,16 +29,12 @@ class Show(models.Model):
     """
     Zawiera informacje o pokazie
 
-    cinema - kino (:model:`app.Cinema`), movie - film (:model:`app.Movie`), date - data i czas pokazu
+    cinema - kino (:model:`app.Cinema`), movie - film (:model:`app.Movie`), date - data i czas pokazu,
+    normal - cena biletu normalnego, students - cena biltetu studenckiego, reduced - cena biletu ulgowego
     """
     cinema = models.ForeignKey(Cinema)
     movie = models.ForeignKey(Movie)
     date = models.DateTimeField()
-
-
-class Price(models.Model):
-    cinema = models.ForeignKey(Cinema)
-    movie = models.ForeignKey(Movie)
     normal = models.FloatField()
     student = models.FloatField()
     reduced = models.FloatField()

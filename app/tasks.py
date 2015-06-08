@@ -2,7 +2,7 @@ from datetime import datetime, date, time
 import threading
 
 from django.utils import timezone
-from app.models import Cinema, Movie, Show, Price
+from app.models import Cinema, Movie, Show
 
 
 
@@ -30,8 +30,6 @@ def importData():
             data = data2
             from app.multikino  import getCinemaType
 
-
-
         for i in data:
             cin = Cinema.objects.filter(name = i['name'])
 
@@ -48,7 +46,7 @@ def importData():
             else:
                 cin = cin[0]
 
-            prices = Price.objects.filter(cinema = cin)
+          #  prices = Price.objects.filter(cinema = cin)
             movies = i['movies']
 
             for m in movies:
@@ -60,25 +58,19 @@ def importData():
                 else:
                     mov = mov[0]
 
-                if len(prices.filter(movie = mov)) == 0:
-
-                    prc = Price(
-                        cinema = cin,
-                        movie = mov,
-                        normal = m['price']['normal'],
-                        reduced = m['price']['reduced'],
-                        student = m['price']['student']
-                    )
-                    prc.save()
-
                 for s in m['shows']:
-			if t == 1:
-				show = Show(cinema = cin, movie = mov, date = datetime.strptime(s, "%Y-%m-%d %H:%M"))
-			else:
-				show = Show(cinema = cin, movie = mov, date = datetime.strptime(s, "%Y-%m-%d %H:%M:%S"))
-                    #show.date = show.date.replace(tzinfo=pytz.timezone('Europe/Warsaw'))
 
-                	show.save()
+                    price = s['price']
+                    show = Show(cinema = cin, movie = mov, normal = price['normal'] , student = price['student'], reduced = price['reduced'])
+
+                    if t == 1:
+                        show.date = datetime.strptime(s['time'], "%Y-%m-%d %H:%M")
+                    else:
+                        show.date = datetime.strptime(s['time'], "%Y-%m-%d %H:%M:%S")
+
+                            #show.date = show.date.replace(tzinfo=pytz.timezone('Europe/Warsaw'))
+
+                    show.save()
 
 
 def importDaily():
