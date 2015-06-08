@@ -5,11 +5,12 @@ google_api_key = 'AIzaSyBp4bRFYsAPL7ltefsD0f9nYIkby21At8o';
 
 
 def clearTitle(title):
-    title = title.replace(' 4DX', '');
-    title = title.replace(' 3D', '');
-    title = title.replace(' IMAX', '');
-    title = title.replace(' / napisy', '');
-    title = title.replace(' / dubbing', '');
+    title = title.replace(' 4DX', '')
+    title = title.replace(' 3D', '')
+    title = title.replace(' 2D', '')
+    title = title.replace(' IMAX', '')
+    title = title.replace(' / napisy', '')
+    title = title.replace(' / dubbing', '')
     return title;
 
 

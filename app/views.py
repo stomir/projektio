@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from dbfun import *
 from app.tasks import *
 from models import *
+import pytz
 
 
 def index(request):
@@ -63,7 +64,7 @@ def mapa(request, movie="", day=""):
     all_cinemas = getCinemas()
     if movie and day:
         if day == "0":
-            d1 = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
+            d1 = datetime.now()#pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
         else:
             d1 = date.today() + timedelta(int(day))
         d2 = date.today() + timedelta(int(day) + 1)
@@ -72,7 +73,6 @@ def mapa(request, movie="", day=""):
         shows = getByMovie(m.title).filter(date__range=(d1, d2)).order_by("date")
         cinemas = Cinema.objects.filter(id__in=shows.values("cinema"))
         for c in cinemas:
-            c.price = Price.objects.filter(cinema=c, movie=m)
             c.shows = shows.filter(cinema=c)
     else:
         cinemas = all_cinemas
@@ -111,13 +111,13 @@ def repertuar(request, day="0", type="0"):
     """
     all_cinemas = getCinemas()
     if day == "0":
-        d = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
+        d = datetime.now()#pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
     else:
         d = date.today() + timedelta(int(day))
 
     shows = getShows(d.year, d.month, d.day).order_by("date")
     for s in shows:
-        s.price = Price.objects.filter(movie = s.movie, cinema = s.cinema)[0].get_price_by_type(type)
+        s.price = s.get_price_by_type(type)
 
     context = {
         'type' : type,
@@ -153,7 +153,7 @@ def by_cinema(request, cinema, day="0", type="0"):
     """
     all_cinemas = getCinemas()
     if day == "0":
-        d1 = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
+        d1 = datetime.now()#pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
     else:
         d1 = date.today() + timedelta(int(day))
     d2 = date.today() + timedelta(int(day) + 1)
@@ -162,7 +162,7 @@ def by_cinema(request, cinema, day="0", type="0"):
     shows = getByCinema(c.cinema_type, c.name).filter(date__range=(d1, d2)).order_by("date")
 
     for s in shows:
-        s.price = Price.objects.filter(movie = s.movie, cinema = s.cinema)[0].get_price_by_type(type)
+        s.price = s.get_price_by_type(type)
 
     context = {
         'type' : type,
@@ -198,7 +198,7 @@ def by_movie(request, movie, day="0", type="0"):
     """
     all_cinemas = getCinemas()
     if day == "0":
-        d1 = datetime.now(pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
+        d1 = datetime.now()#pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
     else:
         d1 = date.today() + timedelta(int(day))
     d2 = date.today() + timedelta(int(day) + 1)
@@ -206,7 +206,7 @@ def by_movie(request, movie, day="0", type="0"):
     print "Movies", d1, "-", d2
     shows = getByMovie(m.title).filter(date__range=(d1, d2)).order_by("date")
     for s in shows:
-        s.price = Price.objects.filter(movie = s.movie, cinema = s.cinema)[0].get_price_by_type(type)
+        s.price = s.get_price_by_type(type)
 
     for sh in shows:
         print sh.date

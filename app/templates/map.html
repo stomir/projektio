@@ -15,13 +15,17 @@
                                     {% if cin.shows %}
                                         "<h4>Pokazy</h4><ul class=\"list-group list-inline\">" +
                                         {% for s in cin.shows %}
-                                            "<li class=\"list-group-item\">{{ s.date|date:"H:i" }}</li>" +
+                                            "<li class=\"list-group-item\" data-toogle=\"popover\" title=\"Ceny\" " +
+                                            "data-content=\'Normalny: <b>{{ s.normal | floatformat:"-2" }}zł</b>, " +
+                                            "Ulgowy: <b>{{ s.reduced | floatformat:"-2" }}zł</b>, " +
+                                            "Studencki: <b>{{ s.student | floatformat:"-2" }}zł</b>\'>" +
+                                            "{{ s.date|date:"H:i" }}</li>" +
                                         {% endfor %}
                                         "</ul>" +
                                     {% elif movie != "" %}
                                         "<h4>To kino nie ma tego filmu w repertuarze</h4>" +
                                     {% endif %}
-                                    {% if cin.price %}"<ul class=\"list-group list-inline\"><li class=\"list-group-item\">Normalny: <b>{{ cin.price.normal | floatformat:"-2" }}zł</b></li><li class=\"list-group-item\">Ulgowy: <b>{{ cin.price.reduced | floatformat:"-2" }}zł</b></li><li class=\"list-group-item\">Studencki: <b>{{ cin.price.student | floatformat:"-2" }}zł</b></li></ul>" +{% endif %}
+                                    {% if cin.price %}"" +{% endif %}
                                     "<p><span class=\"cin-address\">{{ cin.address }}</span>" +
                                     "<br><a href=\"{% url 'by_cinema' cin.id %}\" class=\"rep-link\">Przejdź do repertuaru</a></p>"
                     },
@@ -35,6 +39,7 @@
                 },
             {% endfor %}
             ], google.maps.TravelMode.DRIVING);
+            $('li[data-toggle=popover]').popover()
         </script>
       {% endblock %}
 {% block content %}

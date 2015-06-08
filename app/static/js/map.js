@@ -47,6 +47,7 @@ function showGoogleMap(show_self_location, point_list) {
                     infowindow.open(map, this);
                     var s = ("#point-" + point.lat + "-" + point.lng).replace(/\./g,"_");
                     $(s).text(travelTime[s]);
+                    $(".infocontent li").popover({html: true, placement: 'bottom', trigger: 'hover', viewport: {selector: '.infocontent', padding: 10}});
                 }
             }(infocontent, point_list[i]));
         }
