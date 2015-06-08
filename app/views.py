@@ -203,13 +203,11 @@ def by_movie(request, movie, day="0", type="0"):
         d1 = date.today() + timedelta(int(day))
     d2 = date.today() + timedelta(int(day) + 1)
     m = Movie.objects.get(id=movie)
-    print "Movies", d1, "-", d2
+
     shows = getByMovie(m.title).filter(date__range=(d1, d2)).order_by("date")
     for s in shows:
         s.price = s.get_price_by_type(type)
 
-    for sh in shows:
-        print sh.date
     context = {
         'type' : type,
         'shows': shows,

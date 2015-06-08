@@ -15,7 +15,7 @@
                                     {% if cin.shows %}
                                         "<h4>Pokazy</h4><ul class=\"list-group list-inline\">" +
                                         {% for s in cin.shows %}
-                                            "<li class=\"list-group-item\" data-toogle=\"popover\" title=\"Ceny\" " +
+                                            "<li class=\"list-group-item\" data-toogle=\"popover\" title=\"Ceny biletów\" " +
                                             "data-content=\'Normalny: <b>{{ s.normal | floatformat:"-2" }}zł</b>, " +
                                             "Ulgowy: <b>{{ s.reduced | floatformat:"-2" }}zł</b>, " +
                                             "Studencki: <b>{{ s.student | floatformat:"-2" }}zł</b>\'>" +

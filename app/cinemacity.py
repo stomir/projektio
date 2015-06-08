@@ -57,7 +57,7 @@ def myGetData():
         if (not location):
             continue;
 
-        print name
+        print "Pobieranie danych: CinemaCity - " + name
 
         price_link = "http://cinema-city.pl/" + href
         price_soup = BeautifulSoup(urllib2.urlopen(price_link).read())

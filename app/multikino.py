@@ -44,8 +44,8 @@ def myGetData():
     ret = []
     for a in json.loads(cinemas_json)['results']:
         name = a['name']
-        cinid = a['id'];
-        iddict[name] = cinid;
+        cinid = a['id']
+        iddict[name] = cinid
 
     for cinema_soup in soup.find('div', {'id': 'placeholder-main-plugin-1'}).children:
         if (cinema_soup.name == 'h3'):
@@ -55,6 +55,8 @@ def myGetData():
             cinema_location = resolveAddr(cinema_addr)
             if (not cinema_location):
                 continue
+
+            print "Pobieranie danych: Multikino - " + cinema_name
 
             price_html = json.loads(urllib2.urlopen(price_base_url + str(cinema_id)).read())['results']['prices']
             price_soup = BeautifulSoup(price_html)

@@ -1,6 +1,8 @@
+# Encoding: utf-8
+
 from datetime import datetime, date, time
 import threading
-
+import sys
 from django.utils import timezone
 from app.models import Cinema, Movie, Show
 
@@ -11,11 +13,15 @@ def importData():
 
     from app.cinemacity  import getData
     data1 = getData()
+    if data1 != None:
+        print "Pobieranie OK"
 
     from app.multikino  import getData
     data2 = getData()
+    if data2 != None:
+        print "Pobieranie OK"
 
-    if (len(data1) == 0 and len(data2) == 0) or (data1 == None and data2 == None):
+    if (data1 == None and data2 == None) or (len(data1) == 0 and len(data2) == 0):
         return None#wyslij info do admina
 
     Show.objects.all().delete()
@@ -30,7 +36,9 @@ def importData():
             data = data2
             from app.multikino  import getCinemaType
 
-        for i in data:
+        for indeks, i in enumerate(data):
+            sys.stdout.write("Ukończono: %d%% \r" % ((t - 1) * 50 + (indeks * 50)/len(data)))
+            sys.stdout.flush()
             cin = Cinema.objects.filter(name = i['name'])
 
             #Czy nowe kino
@@ -46,7 +54,6 @@ def importData():
             else:
                 cin = cin[0]
 
-          #  prices = Price.objects.filter(cinema = cin)
             movies = i['movies']
 
             for m in movies:
@@ -68,10 +75,9 @@ def importData():
                     else:
                         show.date = datetime.strptime(s['time'], "%Y-%m-%d %H:%M:%S")
 
-                            #show.date = show.date.replace(tzinfo=pytz.timezone('Europe/Warsaw'))
-
                     show.save()
 
+    sys.stdout.write("Zakończono aktualizację bazy dancyh")
 
 def importDaily():
     importData()
