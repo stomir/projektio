@@ -16,6 +16,14 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{% static "js/bootstrap.min.js" %}"></script>
     {% block scripts %} {% endblock %}
+    <style>
+        .dropdown-menu {
+            max-height: 500px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    </style>
+
 </head>
 <body>
 {% block navigation %}
@@ -43,7 +51,7 @@
                             <li class="dropdown-header">wybranego kina</li>
                             {% for cinema in all_cinemas %}
                                 <li>
-                                    <a href="{% url 'by_cinema' cinema.id %}">{{ cinema.name }}</a>
+                                    <a href="{% url 'by_cinema' cinema.id %}">{{ cinema.cinema_type }} - {{ cinema.name }}</a>
                                 </li>
                             {% endfor %}
                         </ul>
