@@ -3,8 +3,8 @@ from django.contrib import admin
 from app.views import *
 
 urlpatterns = patterns('',
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    #url(r'^admin/', include(admin.site.urls)),
     url(r'^$', index, name='index'),
     url(r'^map/$', mapa, name='mapa'),
     url(r'^map/film/(?P<movie>\d+)/(?P<day>[012])/$', mapa, name='mapa'),
