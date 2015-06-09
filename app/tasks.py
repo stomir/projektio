@@ -7,10 +7,10 @@ from django.utils import timezone
 from app.models import Cinema, Movie, Show
 
 
-
-#Aktualizacja bazy danych
 def importData():
-
+    """
+    Aktualizacja bazy danych
+    """
     from app.cinemacity  import getData
     data1 = getData()
     if data1 != None:

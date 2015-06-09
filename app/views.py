@@ -15,14 +15,14 @@ def index(request):
     **Context**
 
     ``all_cinemas``
-        Wszystkie kina - :model:`app.Cinema`.
+        Wszystkie kina
 
     ``all_movies``
-        Wszystkie filmy - :model:`app.Movie`.
+        Wszystkie filmy
 
     **Template:**
 
-    :template:`index.html`
+        `index.html`
 
     """
     if request.method == "POST":
@@ -45,26 +45,34 @@ def mapa(request, movie="", day=""):
     """
     Widok pokazujący mapę kin wyświetlających wybrany film w danym dniu.
 
+    **Argumenty:**
+
+    ``movie``
+        ID wybranego filmu
+
+    ``day``
+        Dzień: 0 - dziś, 1 - jutro, 2 - pojutrze
+
     **Context**
 
     ``all_cinemas``
-        Wszystkie kina - :model:`app.Cinema`.
+        Wszystkie kina.
 
     ``cinemas``
-        Kina (:model:`app.Cinema`) do wyświetlenia na mapie.
+        Kina do wyświetlenia na mapie.
 
     ``movie``
-        Wybrany film - :model:`app.Movie`.
+        Wybrany film.
 
     **Template:**
 
-    :template:`map.html`
+        `map.html`
 
     """
     all_cinemas = getCinemas()
     if movie and day:
         if day == "0":
-            d1 = datetime.now()#pytz.timezone("Europe/Warsaw")) + timedelta(int(day))
+            d1 = datetime.now()
         else:
             d1 = date.today() + timedelta(int(day))
         d2 = date.today() + timedelta(int(day) + 1)
@@ -90,23 +98,31 @@ def repertuar(request, day="0", type="0"):
     """
     Widok pokazujący repertuar wszystkich kin w danym dniu.
 
+    **Argumenty:**
+
+    ``day``
+        Dzień: 0 - dziś, 1 - jutro, 2 - pojutrze
+
+    ``type``
+        Typ biletu: 0 - normalny, 1 - ulgowy, 2 - studencki
+
     **Context**
 
     ``all_cinemas``
-        Wszystkie kina - :model:`app.Cinema`.
+        Wszystkie kina.
 
     ``type``
         Typ biletu do wyświetlenia
 
     ``shows``
-        Pokazy (:model:`app.Show`) do wyświetlenia w repertuarze.
+        Pokazy do wyświetlenia w repertuarze.
 
     ``name``
         Tytuł wyświetlanego repertuaru.
 
     **Template:**
 
-    :template:`repertuar.html`
+        `repertuar.html`
 
     """
     all_cinemas = getCinemas()
@@ -132,23 +148,34 @@ def by_cinema(request, cinema, day="0", type="0"):
     """
     Widok pokazujący repertuar repertuar wybranego kina w określony dzień.
 
+    **Argumenty:**
+
+    ``cinema``
+        ID wybranego kina
+
+    ``day``
+        Dzień: 0 - dziś, 1 - jutro, 2 - pojutrze
+
+    ``type``
+        Typ biletu: 0 - normalny, 1 - ulgowy, 2 - studencki
+
     **Context**
 
     ``all_cinemas``
-        Wszystkie kina - :model:`app.Cinema`.
+        Wszystkie kina.
 
     ``type``
         Typ biletu do wyświetlenia
 
     ``shows``
-        Pokazy (:model:`app.Show`) do wyświetlenia w repertuarze.
+        Pokazy do wyświetlenia w repertuarze.
 
     ``name``
         Tytuł wyświetlanego repertuaru.
 
     **Template:**
 
-    :template:`repertuar.html`
+        `repertuar.html`
 
     """
     all_cinemas = getCinemas()
@@ -177,23 +204,34 @@ def by_movie(request, movie, day="0", type="0"):
     """
     Widok pokazujący repertuar wybranego filmu w określony dzień we wszystkich kinach.
 
+    **Argumenty:**
+
+    ``movie``
+        ID wybranego filmu
+
+    ``day``
+        Dzień: 0 - dziś, 1 - jutro, 2 - pojutrze
+
+    ``type``
+        Typ biletu: 0 - normalny, 1 - ulgowy, 2 - studencki
+
     **Context**
 
     ``all_cinemas``
-        Wszystkie kina - :model:`app.Cinema`.
+        Wszystkie kina.
 
     ``type``
         Typ biletu do wyświetlenia
 
     ``shows``
-        Pokazy (:model:`app.Show`) do wyświetlenia w repertuarze.
+        Pokazy do wyświetlenia w repertuarze.
 
     ``name``
         Tytuł wyświetlanego repertuaru.
 
     **Template:**
 
-    :template:`repertuar.html`
+        `repertuar.html`
 
     """
     all_cinemas = getCinemas()

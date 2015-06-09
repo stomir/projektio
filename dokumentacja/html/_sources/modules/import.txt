@@ -1,0 +1,17 @@
+Import danych
+=================
+
+Cinema City
+-----------------
+.. automodule:: app.cinemacity
+      :members:
+
+Multikino
+----------------
+
+.. automodule:: app.multikino
+      :members:
+
+Tasks
+----------------
+.. autofunction:: app.tasks.importData

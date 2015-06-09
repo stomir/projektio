@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Baza danych &mdash; Znajdź mi Kino 1.0 - dokumentacja</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="Znajdź mi Kino 1.0 - dokumentacja" href="../index.html" />
+    <link rel="prev" title="Import danych" href="import.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Nawigacja</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Indeks ogólny"
+             accesskey="I">indeks</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Indeks modułów pythona"
+             >moduły</a> |</li>
+        <li class="right" >
+          <a href="import.html" title="Import danych"
+             accesskey="P">wstecz</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Znajdź mi Kino 1.0 - dokumentacja</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-app.dbfun">
+<span id="baza-danych"></span><h1>Baza danych<a class="headerlink" href="#module-app.dbfun" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<dl class="function">
+<dt id="app.dbfun.getByCinema">
+<code class="descclassname">app.dbfun.</code><code class="descname">getByCinema</code><span class="sig-paren">(</span><em>cinema_type</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#app.dbfun.getByCinema" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja zwracająca QuerySet filmów wyświetlanych w danym kinie.</p>
+<p><strong>Argumenty:</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">cinema_type</span></code></dt>
+<dd>Sieć kin</dd>
+<dt><code class="docutils literal"><span class="pre">name</span></code></dt>
+<dd>Nazwa kina</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.dbfun.getByMovie">
+<code class="descclassname">app.dbfun.</code><code class="descname">getByMovie</code><span class="sig-paren">(</span><em>title</em><span class="sig-paren">)</span><a class="headerlink" href="#app.dbfun.getByMovie" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja zwracająca QuerySet filmów o danym tytule.</p>
+<p><strong>Argumenty:</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">title</span></code></dt>
+<dd>tytuł filmu</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.dbfun.getCinemas">
+<code class="descclassname">app.dbfun.</code><code class="descname">getCinemas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.dbfun.getCinemas" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja zwracająca QuerySet wszystkich kin.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.dbfun.getMovies">
+<code class="descclassname">app.dbfun.</code><code class="descname">getMovies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.dbfun.getMovies" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja zwracająca QuerySet wszystkich filmów.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.dbfun.getShows">
+<code class="descclassname">app.dbfun.</code><code class="descname">getShows</code><span class="sig-paren">(</span><em>year</em>, <em>month</em>, <em>day</em><span class="sig-paren">)</span><a class="headerlink" href="#app.dbfun.getShows" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Funkcja zwracająca QuerySet filmów z określonej daty.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Poprzedni temat</h4>
+  <p class="topless"><a href="import.html"
+                        title="poprzedni rozdział">Import danych</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Ta strona</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/modules/database.txt"
+            rel="nofollow">Pokaż źródło</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Szybkie wyszukiwanie</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Szukaj" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Wprowadź szukany termin lub nazwę modułu, klasy lub funkcji.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, PW SP MM MO.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.3</a>
+      
+      |
+      <a href="../_sources/modules/database.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>

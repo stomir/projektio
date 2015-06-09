@@ -1,0 +1,8 @@
+..
+==
+
+.. toctree::
+   :maxdepth: 4
+
+   Znajdz_Mi_Kino
+   manage

@@ -1,0 +1,4 @@
+Baza danych
+============
+.. automodule:: app.dbfun
+       :members:

@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Widoki &mdash; Znajdź mi Kino 1.0 - dokumentacja</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="Znajdź mi Kino 1.0 - dokumentacja" href="../index.html" />
+    <link rel="next" title="Import danych" href="import.html" />
+    <link rel="prev" title="Modele" href="models.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Nawigacja</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Indeks ogólny"
+             accesskey="I">indeks</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Indeks modułów pythona"
+             >moduły</a> |</li>
+        <li class="right" >
+          <a href="import.html" title="Import danych"
+             accesskey="N">dalej</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="Modele"
+             accesskey="P">wstecz</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Znajdź mi Kino 1.0 - dokumentacja</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-app.views">
+<span id="widoki"></span><h1>Widoki<a class="headerlink" href="#module-app.views" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<dl class="function">
+<dt id="app.views.by_cinema">
+<code class="descclassname">app.views.</code><code class="descname">by_cinema</code><span class="sig-paren">(</span><em>request</em>, <em>cinema</em>, <em>day='0'</em>, <em>type='0'</em><span class="sig-paren">)</span><a class="headerlink" href="#app.views.by_cinema" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Widok pokazujący repertuar repertuar wybranego kina w określony dzień.</p>
+<p><strong>Argumenty:</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">cinema</span></code></dt>
+<dd>ID wybranego kina</dd>
+<dt><code class="docutils literal"><span class="pre">day</span></code></dt>
+<dd>Dzień: 0 - dziś, 1 - jutro, 2 - pojutrze</dd>
+<dt><code class="docutils literal"><span class="pre">type</span></code></dt>
+<dd>Typ biletu: 0 - normalny, 1 - ulgowy, 2 - studencki</dd>
+</dl>
+<p><strong>Context</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">all_cinemas</span></code></dt>
+<dd>Wszystkie kina.</dd>
+<dt><code class="docutils literal"><span class="pre">type</span></code></dt>
+<dd>Typ biletu do wyświetlenia</dd>
+<dt><code class="docutils literal"><span class="pre">shows</span></code></dt>
+<dd>Pokazy do wyświetlenia w repertuarze.</dd>
+<dt><code class="docutils literal"><span class="pre">name</span></code></dt>
+<dd>Tytuł wyświetlanego repertuaru.</dd>
+</dl>
+<p><strong>Template:</strong></p>
+<blockquote>
+<div><cite>repertuar.html</cite></div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.views.by_movie">
+<code class="descclassname">app.views.</code><code class="descname">by_movie</code><span class="sig-paren">(</span><em>request</em>, <em>movie</em>, <em>day='0'</em>, <em>type='0'</em><span class="sig-paren">)</span><a class="headerlink" href="#app.views.by_movie" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Widok pokazujący repertuar wybranego filmu w określony dzień we wszystkich kinach.</p>
+<p><strong>Argumenty:</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">movie</span></code></dt>
+<dd>ID wybranego filmu</dd>
+<dt><code class="docutils literal"><span class="pre">day</span></code></dt>
+<dd>Dzień: 0 - dziś, 1 - jutro, 2 - pojutrze</dd>
+<dt><code class="docutils literal"><span class="pre">type</span></code></dt>
+<dd>Typ biletu: 0 - normalny, 1 - ulgowy, 2 - studencki</dd>
+</dl>
+<p><strong>Context</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">all_cinemas</span></code></dt>
+<dd>Wszystkie kina.</dd>
+<dt><code class="docutils literal"><span class="pre">type</span></code></dt>
+<dd>Typ biletu do wyświetlenia</dd>
+<dt><code class="docutils literal"><span class="pre">shows</span></code></dt>
+<dd>Pokazy do wyświetlenia w repertuarze.</dd>
+<dt><code class="docutils literal"><span class="pre">name</span></code></dt>
+<dd>Tytuł wyświetlanego repertuaru.</dd>
+</dl>
+<p><strong>Template:</strong></p>
+<blockquote>
+<div><cite>repertuar.html</cite></div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.views.index">
+<code class="descclassname">app.views.</code><code class="descname">index</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#app.views.index" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Widok strony głównej.</p>
+<p><strong>Context</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">all_cinemas</span></code></dt>
+<dd>Wszystkie kina</dd>
+<dt><code class="docutils literal"><span class="pre">all_movies</span></code></dt>
+<dd>Wszystkie filmy</dd>
+</dl>
+<p><strong>Template:</strong></p>
+<blockquote>
+<div><cite>index.html</cite></div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.views.mapa">
+<code class="descclassname">app.views.</code><code class="descname">mapa</code><span class="sig-paren">(</span><em>request</em>, <em>movie=''</em>, <em>day=''</em><span class="sig-paren">)</span><a class="headerlink" href="#app.views.mapa" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Widok pokazujący mapę kin wyświetlających wybrany film w danym dniu.</p>
+<p><strong>Argumenty:</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">movie</span></code></dt>
+<dd>ID wybranego filmu</dd>
+<dt><code class="docutils literal"><span class="pre">day</span></code></dt>
+<dd>Dzień: 0 - dziś, 1 - jutro, 2 - pojutrze</dd>
+</dl>
+<p><strong>Context</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">all_cinemas</span></code></dt>
+<dd>Wszystkie kina.</dd>
+<dt><code class="docutils literal"><span class="pre">cinemas</span></code></dt>
+<dd>Kina do wyświetlenia na mapie.</dd>
+<dt><code class="docutils literal"><span class="pre">movie</span></code></dt>
+<dd>Wybrany film.</dd>
+</dl>
+<p><strong>Template:</strong></p>
+<blockquote>
+<div><cite>map.html</cite></div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.views.repertuar">
+<code class="descclassname">app.views.</code><code class="descname">repertuar</code><span class="sig-paren">(</span><em>request</em>, <em>day='0'</em>, <em>type='0'</em><span class="sig-paren">)</span><a class="headerlink" href="#app.views.repertuar" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Widok pokazujący repertuar wszystkich kin w danym dniu.</p>
+<p><strong>Argumenty:</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">day</span></code></dt>
+<dd>Dzień: 0 - dziś, 1 - jutro, 2 - pojutrze</dd>
+<dt><code class="docutils literal"><span class="pre">type</span></code></dt>
+<dd>Typ biletu: 0 - normalny, 1 - ulgowy, 2 - studencki</dd>
+</dl>
+<p><strong>Context</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">all_cinemas</span></code></dt>
+<dd>Wszystkie kina.</dd>
+<dt><code class="docutils literal"><span class="pre">type</span></code></dt>
+<dd>Typ biletu do wyświetlenia</dd>
+<dt><code class="docutils literal"><span class="pre">shows</span></code></dt>
+<dd>Pokazy do wyświetlenia w repertuarze.</dd>
+<dt><code class="docutils literal"><span class="pre">name</span></code></dt>
+<dd>Tytuł wyświetlanego repertuaru.</dd>
+</dl>
+<p><strong>Template:</strong></p>
+<blockquote>
+<div><cite>repertuar.html</cite></div></blockquote>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Poprzedni temat</h4>
+  <p class="topless"><a href="models.html"
+                        title="poprzedni rozdział">Modele</a></p>
+  <h4>Następny temat</h4>
+  <p class="topless"><a href="import.html"
+                        title="następny rozdział">Import danych</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Ta strona</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/modules/views.txt"
+            rel="nofollow">Pokaż źródło</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Szybkie wyszukiwanie</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Szukaj" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Wprowadź szukany termin lub nazwę modułu, klasy lub funkcji.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, PW SP MM MO.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.3</a>
+      
+      |
+      <a href="../_sources/modules/views.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>

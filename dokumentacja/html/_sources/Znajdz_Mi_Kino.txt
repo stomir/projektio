@@ -1,0 +1,38 @@
+Znajdz_Mi_Kino package
+======================
+
+Submodules
+----------
+
+Znajdz_Mi_Kino.settings module
+------------------------------
+
+.. automodule:: Znajdz_Mi_Kino.settings
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Znajdz_Mi_Kino.urls module
+--------------------------
+
+.. automodule:: Znajdz_Mi_Kino.urls
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Znajdz_Mi_Kino.wsgi module
+--------------------------
+
+.. automodule:: Znajdz_Mi_Kino.wsgi
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: Znajdz_Mi_Kino
+    :members:
+    :undoc-members:
+    :show-inheritance:

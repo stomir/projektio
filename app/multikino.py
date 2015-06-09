@@ -1,3 +1,5 @@
+# Encoding: utf-8
+
 import urllib2, urllib, json, datetime, re
 from bs4 import BeautifulSoup;
 
@@ -5,6 +7,16 @@ google_api_key = 'AIzaSyBp4bRFYsAPL7ltefsD0f9nYIkby21At8o';
 
 
 def clearTitle(title):
+    """
+    Oczyszczenie tytułu filmu z dodatków, np. "3D"
+
+    **Argumenty:**
+
+    ``title``
+        tytuł filmu
+    **Wartość zwracana**
+        oczyszczony tytuł
+    """
     title = title.replace(' 4DX', '')
     title = title.replace(' 3D', '')
     title = title.replace(' 2D', '')
@@ -15,6 +27,16 @@ def clearTitle(title):
 
 
 def resolveAddr(addr):
+    """
+    Znalezienie współrzędnych wg. adresu przy pomocy Google API
+
+    **Argumenty:**
+
+    ``addr``
+        adres jako string
+    **Wartość zwracana**
+        słownik z danymi "lat" i "lng" - współrzędne
+    """
     json_data = urllib2.urlopen(("https://maps.googleapis.com/maps/api/geocode/json?" + urllib.urlencode(
         {'address': addr, 'key': google_api_key}))).read()
     data = json.loads(json_data).get('results')
@@ -30,12 +52,16 @@ def resolveAddr(addr):
 def getCinemaType():
     return "MultiKino";
 
-
 def getReserveLink(addr, time, title):
     return "http://multikino.pl"
 
-
 def myGetData():
+    """
+    Właściwe pobieranie danych które może rzucać wyjątki
+
+    **Wartość zwracana**
+        pobrane dane
+    """
     cinemas_html = urllib2.urlopen("http://multikino.pl/pl/wszystkie-kina").read()
     cinemas_json = urllib2.urlopen("http://multikino.pl/pl/repertoire/cinema/index").read()
     price_base_url = "https://multikino.pl/pl/repertoire/cinema/pricelist?id="

@@ -3,8 +3,8 @@ from app.tasks import importData
 
 
 class Command(BaseCommand):
-    help = 'Uruchamia codzienny import daych'
+    help = 'Uruchamia codzienny import danych'
 
     def handle(self, *args, **options):
         importData()
-        self.stdout.write('Uruchomiono codzienny import daych')
+        self.stdout.write('Uruchomiono codzienny import danych')

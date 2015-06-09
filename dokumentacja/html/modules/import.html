@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Import danych &mdash; Znajdź mi Kino 1.0 - dokumentacja</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="top" title="Znajdź mi Kino 1.0 - dokumentacja" href="../index.html" />
+    <link rel="next" title="Baza danych" href="database.html" />
+    <link rel="prev" title="Widoki" href="views.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Nawigacja</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Indeks ogólny"
+             accesskey="I">indeks</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Indeks modułów pythona"
+             >moduły</a> |</li>
+        <li class="right" >
+          <a href="database.html" title="Baza danych"
+             accesskey="N">dalej</a> |</li>
+        <li class="right" >
+          <a href="views.html" title="Widoki"
+             accesskey="P">wstecz</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Znajdź mi Kino 1.0 - dokumentacja</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="import-danych">
+<h1>Import danych<a class="headerlink" href="#import-danych" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<div class="section" id="module-app.cinemacity">
+<span id="cinema-city"></span><h2>Cinema City<a class="headerlink" href="#module-app.cinemacity" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<dl class="function">
+<dt id="app.cinemacity.clearTitle">
+<code class="descclassname">app.cinemacity.</code><code class="descname">clearTitle</code><span class="sig-paren">(</span><em>title</em><span class="sig-paren">)</span><a class="headerlink" href="#app.cinemacity.clearTitle" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Oczyszczenie tytułu filmu z dodatków, np. &#8220;3D&#8221;</p>
+<p><strong>Argumenty:</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">title</span></code></dt>
+<dd>tytuł filmu</dd>
+<dt><strong>Wartość zwracana</strong></dt>
+<dd>oczyszczony tytuł</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.cinemacity.myGetData">
+<code class="descclassname">app.cinemacity.</code><code class="descname">myGetData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.cinemacity.myGetData" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Właściwe pobieranie danych które może rzucać wyjątki</p>
+<dl class="docutils">
+<dt><strong>Wartość zwracana</strong></dt>
+<dd>pobrane dane</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.cinemacity.resolveAddr">
+<code class="descclassname">app.cinemacity.</code><code class="descname">resolveAddr</code><span class="sig-paren">(</span><em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#app.cinemacity.resolveAddr" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Znalezienie współrzędnych wg. adresu przy pomocy Google API</p>
+<p><strong>Argumenty:</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">addr</span></code></dt>
+<dd>adres jako string</dd>
+<dt><strong>Wartość zwracana</strong></dt>
+<dd>słownik z danymi &#8220;lat&#8221; i &#8220;lng&#8221; - współrzędne</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.multikino">
+<span id="multikino"></span><h2>Multikino<a class="headerlink" href="#module-app.multikino" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<dl class="function">
+<dt id="app.multikino.clearTitle">
+<code class="descclassname">app.multikino.</code><code class="descname">clearTitle</code><span class="sig-paren">(</span><em>title</em><span class="sig-paren">)</span><a class="headerlink" href="#app.multikino.clearTitle" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Oczyszczenie tytułu filmu z dodatków, np. &#8220;3D&#8221;</p>
+<p><strong>Argumenty:</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">title</span></code></dt>
+<dd>tytuł filmu</dd>
+<dt><strong>Wartość zwracana</strong></dt>
+<dd>oczyszczony tytuł</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.multikino.myGetData">
+<code class="descclassname">app.multikino.</code><code class="descname">myGetData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.multikino.myGetData" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Właściwe pobieranie danych które może rzucać wyjątki</p>
+<dl class="docutils">
+<dt><strong>Wartość zwracana</strong></dt>
+<dd>pobrane dane</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.multikino.resolveAddr">
+<code class="descclassname">app.multikino.</code><code class="descname">resolveAddr</code><span class="sig-paren">(</span><em>addr</em><span class="sig-paren">)</span><a class="headerlink" href="#app.multikino.resolveAddr" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Znalezienie współrzędnych wg. adresu przy pomocy Google API</p>
+<p><strong>Argumenty:</strong></p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">addr</span></code></dt>
+<dd>adres jako string</dd>
+<dt><strong>Wartość zwracana</strong></dt>
+<dd>słownik z danymi &#8220;lat&#8221; i &#8220;lng&#8221; - współrzędne</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="tasks">
+<h2>Tasks<a class="headerlink" href="#tasks" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<dl class="function">
+<dt id="app.tasks.importData">
+<code class="descclassname">app.tasks.</code><code class="descname">importData</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.tasks.importData" title="Stały odnośnik do tej definicji">¶</a></dt>
+<dd><p>Aktualizacja bazy danych</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Spis treści</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Import danych</a><ul>
+<li><a class="reference internal" href="#module-app.cinemacity">Cinema City</a></li>
+<li><a class="reference internal" href="#module-app.multikino">Multikino</a></li>
+<li><a class="reference internal" href="#tasks">Tasks</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Poprzedni temat</h4>
+  <p class="topless"><a href="views.html"
+                        title="poprzedni rozdział">Widoki</a></p>
+  <h4>Następny temat</h4>
+  <p class="topless"><a href="database.html"
+                        title="następny rozdział">Baza danych</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Ta strona</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/modules/import.txt"
+            rel="nofollow">Pokaż źródło</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Szybkie wyszukiwanie</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Szukaj" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Wprowadź szukany termin lub nazwę modułu, klasy lub funkcji.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, PW SP MM MO.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.3</a>
+      
+      |
+      <a href="../_sources/modules/import.txt"
+          rel="nofollow">Page source</a></li>
+    </div>
+
+    
+
+    
+  </body>
+</html>
